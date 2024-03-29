@@ -12,12 +12,13 @@ export default class ParticleShader extends Shader{
         if(this.attributes.length==0) {
             this.addAttribute("aPos", ShaderType.vec3);
             this.addAttribute("aNormal", ShaderType.vec3);
-
+            this.addAttribute("aInstancePos", ShaderType.vec4,1,"instance");
         }
         //this.renderer.texturesByLabel["GDepth"]
 
         this.needsTransform =true;
         this.needsCamera=true;
+        this.logShaderCode =true;
     }
     getShaderCode(): string {
         return /* wgsl */ `
@@ -40,7 +41,7 @@ fn mainVertex( ${this.getShaderAttributes()} ) -> VertexOutput
 {
     var output : VertexOutput;
     
-    output.position =camera.viewProjectionMatrix*model.modelMatrix *vec4( aPos,1.0);
+    output.position =camera.viewProjectionMatrix*model.modelMatrix *vec4( aPos+aInstancePos.xyz,1.0);
     output.normal =aNormal;
     return output;
 }

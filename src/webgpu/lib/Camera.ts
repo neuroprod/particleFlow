@@ -7,11 +7,11 @@ import GameModel from "../GameModel";
 
 export default class Camera extends UniformGroup {
     public static instance: Camera;
-    public cameraWorld: Vector3 = new Vector3(5, 5, 5);
-    public cameraWorldU: Vector4 = new Vector4(5, 5, 5, 1.0);
+    public cameraWorld: Vector3 = new Vector3(10, 10, 10);
+    public cameraWorldU: Vector4 = new Vector4(10, 10, 10, 1.0);
     public cameraLookAt: Vector3 = new Vector3(0, 0, 0);
     public cameraUp: Vector3 = new Vector3(0, 1, 0);
-    public fovy = 0.9
+    public fovy = 1.2
     public near = 2;
     public far = 100;
     public ratio = 1
