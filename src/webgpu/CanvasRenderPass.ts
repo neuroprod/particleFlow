@@ -5,6 +5,7 @@ import Renderer from "./lib/Renderer.ts";
 import {TextureFormat} from "./lib/WebGPUConstants.ts";
 import DepthStencilAttachment from "./lib/textures/DepthStencilAttachment.ts";
 import UI from "./lib/UI/UI.ts";
+import ModelRenderer from "./lib/model/ModelRenderer.ts";
 
 
 export default class CanvasRenderPass extends RenderPass {
@@ -12,12 +13,12 @@ export default class CanvasRenderPass extends RenderPass {
 
     private canvasColorTarget: RenderTexture;
     private canvasDepthTarget: RenderTexture;
-
+public modelRenderer:ModelRenderer;
 
     constructor(renderer: Renderer) {
 
         super(renderer, "canvasRenderPass");
-
+        this.modelRenderer =new ModelRenderer(renderer,"mainModelRenderer");
         this.sampleCount = 4
 
 
@@ -62,7 +63,7 @@ export default class CanvasRenderPass extends RenderPass {
     draw() {
 
 
-
+        this.modelRenderer.draw(this)
         UI.drawGPU(this.passEncoder, true)
     }
 

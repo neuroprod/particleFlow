@@ -6,6 +6,9 @@ import Texture from "./textures/Texture.ts";
 import RenderTexture from "./textures/RenderTexture.ts";
 import {Vector2} from "math.gl";
 import UI from "./UI/UI.ts";
+import Material from "./core/Material.ts";
+import Model from "./model/Model.ts";
+import UniformGroup from "./core/UniformGroup.ts";
 
 
 export default class Renderer {
@@ -32,6 +35,17 @@ export default class Renderer {
     public texturesByLabel: { [label: string]: Texture } = {};
     public textures: Array<Texture> = [];
     private scaleToCanvasTextures: Array<RenderTexture> = [];
+
+
+    private materials: Array<Material> = [];
+
+    models: Array<Model> = [];
+    public modelByLabel: { [label: string]: Model } = {};
+    public modelLabels:Array<string>=[];
+
+    private uniformGroups: Array<UniformGroup> = [];
+
+
     constructor() {
     }
 
@@ -87,6 +101,8 @@ export default class Renderer {
     public update(setCommands: () => void) {
 
         this.updateSize();
+        this.updateModels();
+        this.updateUniformGroups();
         UI.updateGPU();
         //
 
@@ -113,6 +129,28 @@ export default class Renderer {
     addTexture(texture: Texture) {
         this.textures.push(texture);
         this.texturesByLabel[texture.label] = texture;
+    }
+    addUniformGroup(uniformGroup: UniformGroup) {
+        this.uniformGroups.push(uniformGroup)
+    }
+    addModel(model: Model) {
+        this.models.push(model)
+        this.modelByLabel[model.label]=model;
+        this.modelLabels.push(model.label);
+    }
+
+    addMaterial(material: Material) {
+        this.materials.push(material)
+    }
+    private updateUniformGroups() {
+        for (let u of this.uniformGroups) {
+            u.update()
+        }
+    }
+    updateModels() {
+        for (let m of this.models) {
+            m.update();
+        }
     }
     private updateSize() {
 
