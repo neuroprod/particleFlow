@@ -50,8 +50,8 @@ fn mainVertex( ${this.getShaderAttributes()} ) -> VertexOutput
 @fragment
 fn mainFragment(@location(0) normal: vec3f) ->   @location(0) vec4f
 {
-
-  return vec4f(normal,1.0);
+        let d = dot(normal,vec3(0.0,1.0,0.0))*0.6+0.4;
+  return vec4f(vec3(d),1.0);
  
 }
 ///////////////////////////////////////////////////////////

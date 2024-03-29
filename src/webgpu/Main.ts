@@ -54,7 +54,7 @@ export default class Main{
         this.canvasRenderPass.modelRenderer.camera =this.camera
 
         this.model = new Model(this.renderer,"partModel")
-        this.model.mesh =new Sphere(this.renderer,0.05,5,3)
+        this.model.mesh =new Sphere(this.renderer,0.1,5,3)
         this.model.material =new Material(this.renderer,"modelMat",new ParticleShader(this.renderer,"particleShader"))
         this.makePositions()
 
@@ -93,7 +93,7 @@ export default class Main{
 
     }
     private makePositions() {
-        this.model.numInstances =1000000;
+        this.model.numInstances =500000;
 
 
         let data =new Float32Array( this.model.numInstances*4)
@@ -104,7 +104,7 @@ export default class Main{
 
         let x = i%1000
             if(x==0) y++;
-            data[index++]=(x/1000-0.5)*20;
+            data[index++]=(x/1000-0.5)*40;
             data[index++]=0;
             data[index++]=(y/1000 -0.5)*20;
             data[index++]=Math.random();

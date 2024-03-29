@@ -7,8 +7,8 @@ import GameModel from "../GameModel";
 
 export default class Camera extends UniformGroup {
     public static instance: Camera;
-    public cameraWorld: Vector3 = new Vector3(10, 10, 10);
-    public cameraWorldU: Vector4 = new Vector4(10, 10, 10, 1.0);
+    public cameraWorld: Vector3 = new Vector3(0, 0, 20);
+    public cameraWorldU: Vector4 = new Vector4(0, 0, 10, 1.0);
     public cameraLookAt: Vector3 = new Vector3(0, 0, 0);
     public cameraUp: Vector3 = new Vector3(0, 1, 0);
     public fovy = 1.2

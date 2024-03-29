@@ -293,31 +293,46 @@ struct Particles {
         
         let index = global_id.x;
         var tar = in.particles [index];
+        let w =tar.w;
         var speed =inSpeed.particles [index];
-        /*for (var i = 0u; i < arrayLength(&in.particles); i++) {
+       /* for (var i = 0u; i < arrayLength(&in.particles); i++) {
             if (i == index) {
                 continue;
             }
 
             let pos = in.particles[i];
 
-            if (distance(pos.xyz, tar.xyz) <0.04) {
+            if (distance(pos.xyz, tar.xyz) <0.1) {
           tar-=vec4((pos.xyz- tar.xyz),0.0);
             }
          }*/
-     
-         let tarS = tar*0.2;
-         let t = uniforms.time*0.2;
-         let x  = snoise3d(vec3(tarS.zy,t))*0.01+snoise3d(vec3(tarS.zy*0.2,t))*0.02;
-         let y = snoise3d(vec3(t,tarS.xz))*0.02;
-         let z  = snoise3d(vec3(tarS.x,t,tarS.z))*0.02;
-         speed+=vec4f(x,y,z,0.0);
-         speed*=0.93;
-         tar+=vec4(speed.xyz,0);
-         if(length(tar.xyz)>15.0){
-                tar =vec4(normalize(tar.xyz)*3.0,tar.w);
-              //speed  =vec4(0.0);
+     let wp=0.025+w*w*w*0.02;
+         let tarS = tar*0.5;
+         let t = uniforms.time*9;
+         let x =abs(snoise3d(vec3(tarS.zy,t))*0.03)+0.09;
+         let y = snoise3d(vec3(t,tarS.xz))*wp+snoise3d(vec3(t*0.2,tar.xz*0.01))*0.10;
+         let z  = snoise3d(vec3(tarS.x,t,tarS.z))*wp*2+snoise3d(vec3(t*0.2,tar.yx*0.01))*0.10;;
+         
+         
+         
+         
+         speed+=vec4f(x,y,z,0.0)*0.1;
+         
+         
+         
+         speed*=0.980-w*w*w*w*0.01;
+       
+         tar+=vec4(speed.xyz*0.5,0);
+      
+         if(tar.x>20.0){
+       let x =tar.x;
+       tar.x =0;
+                tar =vec4(normalize(tar.xyz)*w*3.0,tar.w);
+                 tar.z =abs(tar.z);
+                tar.x =x -40;
+             speed  *=vec4(0.0);
            }
+            tar.w =w;
          out.particles [index] =tar;
         outSpeed.particles [index]= speed;
           
