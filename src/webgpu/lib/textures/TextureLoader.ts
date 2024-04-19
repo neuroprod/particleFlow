@@ -47,7 +47,7 @@ export default class TextureLoader extends Texture {
             [imageBitmap.width, imageBitmap.height]
         );
 
-        this.renderer.mipmapQueue.addTexture(this)
+        //this.renderer.mipmapQueue.addTexture(this)
         this.loaded=true;
     }
 

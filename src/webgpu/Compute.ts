@@ -307,11 +307,11 @@ struct Particles {
             }
          }*/
      let wp=0.025+w*w*w*0.02;
-         let tarS = tar*0.5;
+         let tarS = tar*0.2;
          let t = uniforms.time*9;
-         let x =abs(snoise3d(vec3(tarS.zy,t))*0.03)+0.09;
-         let y = snoise3d(vec3(t,tarS.xz))*wp+snoise3d(vec3(t*0.2,tar.xz*0.01))*0.10;
-         let z  = snoise3d(vec3(tarS.x,t,tarS.z))*wp*2+snoise3d(vec3(t*0.2,tar.yx*0.01))*0.10;;
+         let x =abs(snoise3d(vec3(tarS.zy,t))*0.03)+0.04;
+         let y = snoise3d(vec3(t,tarS.xz))*wp+snoise3d(vec3(t*0.2,tar.xz*0.01))*0.05;
+         let z  = snoise3d(vec3(tarS.x,t,tarS.z))*wp*2+snoise3d(vec3(t*0.2,tar.yx*0.01))*0.05;;
          
          
          
@@ -320,7 +320,7 @@ struct Particles {
          
          
          
-         speed*=0.980-w*w*w*w*0.01;
+         speed*=0.970;
        
          tar+=vec4(speed.xyz*0.5,0);
       

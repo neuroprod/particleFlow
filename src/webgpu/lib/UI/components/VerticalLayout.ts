@@ -3,7 +3,7 @@ import UI_I from "../UI_I";
 import Rect from "../math/Rect";
 import Color from "../math/Color";
 import Utils from "../math/Utils";
-import { settings } from "cluster";
+
 
 export class VerticalLayoutSettings extends ComponentSettings {
   scrollBarWidth = 3;

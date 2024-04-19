@@ -6,7 +6,7 @@ import {CompareFunction} from "../WebGPUConstants";
 import UniformGroup from "./UniformGroup";
 import ModelTransform from "../model/ModelTransform";
 import Camera from "../Camera";
-import Skin from "../animation/Skin";
+
 
 export default class Material extends ObjectGPU {
     shader: Shader;
@@ -19,7 +19,7 @@ export default class Material extends ObjectGPU {
     private colorTargets: Array<GPUColorTargetState> = [];
     private depthStencilState: GPUDepthStencilState;
     private needsDepth: boolean = true;
-    public skin:Skin
+
     public cullMode: "none" | "front" | "back" = "back";
     private extraGroup: UniformGroup;
     constructor(renderer: Renderer, label: string, shader: Shader) {
@@ -101,7 +101,7 @@ export default class Material extends ObjectGPU {
         if (this.shader.needsCamera) layouts.push(Camera.getBindGroupLayout())
         if (this.shader.needsTransform) layouts.push(ModelTransform.getBindGroupLayout())
         if(this.uniforms) layouts.push(this.uniforms.bindGroupLayout)
-        if(this.skin) layouts.push(this.skin.bindGroupLayout)
+
         if(this.extraGroup) layouts.push(this.extraGroup.bindGroupLayout)
         this.pipeLineLayout = this.device.createPipelineLayout({
             label: "Material_pipelineLayout_" + this.label,

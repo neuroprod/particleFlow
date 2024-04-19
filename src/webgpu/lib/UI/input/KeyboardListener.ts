@@ -1,4 +1,4 @@
-import { LeftRightDialogHeader } from "next/dist/client/components/react-dev-overlay/internal/components/LeftRightDialogHeader";
+
 
 export enum ActionKey {
   None,

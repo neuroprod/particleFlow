@@ -8,8 +8,8 @@ export default class FBO {
 
   private fbo!: WebGLFramebuffer;
   private renderbuffer!: WebGLRenderbuffer;
-  private _resizeTimeOut!: NodeJS.Timeout;
   private repeat: boolean = false;
+  private _resizeTimeOut: number;
 
   constructor(
     gl: WebGL2RenderingContext | WebGLRenderingContext,

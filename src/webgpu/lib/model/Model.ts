@@ -3,7 +3,7 @@ import Material from "../core/Material";
 import Mesh from "../core/Mesh";
 import Object3D from "../core/Object3D";
 import ModelTransform from "./ModelTransform";
-import HitTestObject from "../meshes/HitTestObject";
+import HitTestObject from "../mesh/HitTestObject";
 import Ray from "../Ray";
 
 import UI from "../UI/UI";
