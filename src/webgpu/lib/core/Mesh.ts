@@ -2,7 +2,7 @@ import ObjectGPU from "./ObjectGPU";
 import Renderer from "../Renderer";
 import {IndexFormat} from "../WebGPUConstants";
 
-import HitTestObject from "../meshes/HitTestObject";
+import HitTestObject from "../mesh/HitTestObject";
 import {Vector3} from "math.gl";
 
 export default class Mesh extends ObjectGPU {
