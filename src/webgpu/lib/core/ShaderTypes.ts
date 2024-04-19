@@ -1,5 +1,3 @@
-import {number} from "prop-types";
-import MathArray from "@math.gl/core/src/classes/base/math-array";
 
 
 
@@ -13,7 +11,7 @@ export const ShaderType = {
     mat4: 'mat4x4',
 }
 
-export function getAutoType(value:number|MathArray)
+export function getAutoType(value:number|Array<number>)
 {
 
 }

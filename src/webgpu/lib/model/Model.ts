@@ -98,7 +98,7 @@ try{
 
     destroy() {
 
-        if(this.keepAlive) this.renderer.removeModel(this);
+       // if(this.keepAlive) this.renderer.removeModel(this);
         if(this.mesh)this.mesh.destroy();
 
         if (this.parent) this.parent.removeChild(this);

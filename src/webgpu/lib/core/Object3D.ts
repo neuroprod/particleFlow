@@ -145,7 +145,7 @@ export default class Object3D extends ObjectGPU {
 
         this.buttonGroupSetting.hasChildren = this.children.length > 0;
         if(UI.pushButtonGroup(this.label,this.buttonGroupSetting)){
-        this.renderer.selectedUIObject =this;
+      //  this.renderer.selectedUIObject =this;
         }
 
         for (let c of this.children) {

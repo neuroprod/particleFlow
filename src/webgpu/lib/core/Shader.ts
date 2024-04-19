@@ -7,7 +7,7 @@ import Material from "./Material";
 import Texture from "../textures/Texture";
 import {AddressMode, FilterMode, TextureDimension} from "../WebGPUConstants";
 import {ShaderType} from "./ShaderTypes";
-import MathArray from "math.gl";
+
 
 
 export default class Shader extends ObjectGPU {
@@ -31,7 +31,7 @@ export default class Shader extends ObjectGPU {
     init() {
     }
 
-    public addUniform(name: string, value: MathArray | number, usage: GPUShaderStageFlags = GPUShaderStage.FRAGMENT, format = ShaderType.auto, arraySize = 1) {
+    public addUniform(name: string, value: Array<number>| number, usage: GPUShaderStageFlags = GPUShaderStage.FRAGMENT, format = ShaderType.auto, arraySize = 1) {
         if (!this.tempMaterial.uniforms) this.tempMaterial.uniforms = new UniformGroup(this.renderer, this.label, "uniforms")
 
         this.tempMaterial.uniforms.addUniform(name, value,usage,format,arraySize)
