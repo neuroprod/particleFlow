@@ -143,7 +143,7 @@ export default class UniformGroup extends ObjectGPU {
         //this.samplerUniforms.push({name:name,sampler:sampler,usage:GPUShaderStage.FRAGMENT})
     }
 
-    setUniform(name: string, value:Float32Array | MathArray | number) {
+    setUniform(name: string, value:Float32Array | Array<number> | number) {
         const found = this.uniforms.find((element) => element.name == name);
 
         if (found) {
@@ -397,7 +397,7 @@ struct ${this.typeInShader}
             if (u.size == 1) {
                 this.bufferData[u.offset] = u.data as number;
             } else {
-                this.bufferData.set(u.data as MathArray, u.offset);
+                this.bufferData.set(u.data as Array<number>, u.offset);
 
             }
         }
